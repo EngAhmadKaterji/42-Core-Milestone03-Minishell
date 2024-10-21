@@ -6,7 +6,7 @@
 /*   By: akaterji <akaterji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:38:10 by akaterji          #+#    #+#             */
-/*   Updated: 2024/06/30 10:23:24 by akaterji         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:51:20 by akaterji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char		*get_static_line(char *sline, int fd);
 char		*update_static_line(char *sline, char *buffer, int *flag, size_t b);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000
 # endif
 
 typedef struct s_list
@@ -36,9 +36,12 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 char		*ft_itoa(int n);
+int			ft_in(const char s, const char *set);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strdup(const char *s);
+void		ft_strcpy(char *dst, const char *src);
+char		*ft_strndup(const char *s, int len);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strnstr(const char *big, const char *little, size_t len);
@@ -73,6 +76,7 @@ int			ft_lstsize(t_list *lst);
 int			is_char(char c, char const *set);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 size_t		ft_strlcat(char *dest, const char *src, unsigned int size);
 size_t		ft_strlen(char const *str);

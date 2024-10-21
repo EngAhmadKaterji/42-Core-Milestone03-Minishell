@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akaterji <akaterji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 15:57:53 by akaterji          #+#    #+#             */
-/*   Updated: 2024/06/13 12:10:57 by akaterji         ###   ########.fr       */
+/*   Created: 2024/06/10 14:38:52 by akaterji          #+#    #+#             */
+/*   Updated: 2024/07/24 12:19:28 by akaterji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	if (!*little)
-		return ((char *)big);
-	if (len == 0)
-		return (NULL);
-	while (big[i] != '\0')
+	if (!s1 && s2)
+		return (-s2[i]);
+	if (!s2 && s1)
+		return (s1[i]);
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n)
 	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			while (big[i + j] == little[j] && little[j] != '\0' && j < len - i)
-				j++;
-			if (!little[j])
-				return ((char *)(big + i));
-		}
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (NULL);
+	if (i == n)
+		return (0);
+	return (s1[i] - s2[i]);
 }

@@ -6,11 +6,11 @@
 /*   By: akaterji <akaterji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:13:52 by akaterji          #+#    #+#             */
-/*   Updated: 2024/06/30 10:25:03 by akaterji         ###   ########.fr       */
+/*   Updated: 2024/06/21 09:37:02 by akaterji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "get_next_line.h"
 
 char	*allocate_and_initialize(char *sline, char *buffer)
 {

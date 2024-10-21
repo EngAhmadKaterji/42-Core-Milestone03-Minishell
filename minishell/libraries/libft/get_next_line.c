@@ -6,11 +6,11 @@
 /*   By: akaterji <akaterji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:16:07 by akaterji          #+#    #+#             */
-/*   Updated: 2024/06/30 10:42:25 by akaterji         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:04:51 by akaterji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "get_next_line.h"
 
 size_t	get_len(char *str)
 {
@@ -41,7 +41,7 @@ char	*get_static_line(char *sline, int fd)
 	if (!buffer)
 		return (NULL);
 	read_bytes = read(fd, buffer, BUFFER_SIZE);
-	if (read_bytes == -1)
+	if (read_bytes == -1 || (!buffer && !sline))
 		return (free_and_null(buffer));
 	buffer[read_bytes] = '\0';
 	while (read_bytes > 0 && !flag_new)
@@ -61,15 +61,15 @@ char	*get_static_line(char *sline, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*sline[1048];
+	static char	*sline;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	sline[fd] = get_static_line(sline[fd], fd);
-	if (sline[fd] == NULL)
+	sline = get_static_line(sline, fd);
+	if (sline == NULL)
 		return (NULL);
-	line = get_target_line(sline[fd]);
-	sline[fd] = ft_remove_line(sline[fd]);
+	line = get_target_line(sline);
+	sline = ft_remove_line(sline);
 	return (line);
 }

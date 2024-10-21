@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akaterji <akaterji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 18:41:11 by akaterji          #+#    #+#             */
-/*   Updated: 2024/07/08 17:40:39 by akaterji         ###   ########.fr       */
+/*   Created: 2024/07/30 08:47:04 by akaterji          #+#    #+#             */
+/*   Updated: 2024/07/31 11:17:59 by akaterji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_strcpy(char *dst, const char *src)
 {
-	t_list	*new_node;
-
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	while (src && *src)
+		*dst++ = *src++;
+	*dst = '\0';
 }
